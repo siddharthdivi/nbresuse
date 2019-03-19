@@ -46,7 +46,7 @@ define(['jquery', 'base/js/utils'], function ($, utils) {
     var load_ipython_extension = function () {
         setupDOM();
         displayMetrics();
-        // Update every five seconds, eh?
+        // Update every 10 milli seconds, eh?
         setInterval(displayMetrics, 10);
     };
 

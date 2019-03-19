@@ -19,7 +19,7 @@ class MetricsHandler(IPythonHandler):
         #rss = sum([p.memory_info().rss for p in all_processes])
 
         vm = dict(psutil.virtual_memory()._asdict())
-        cur_process = str(round(vm["used"]/(1024*1024*1024),2)) + " GB / " + str(round(vm["total"]/(1024*1024*1024),2)) + " GB" + "\n"
+        cur_process = round(vm["used"]/(1024*1024*1024),2)
         
         rss = cur_process
         
@@ -27,7 +27,7 @@ class MetricsHandler(IPythonHandler):
 
         if config.mem_limit != 0:
             limits['memory'] = {
-                'rss': config.mem_limit
+                'rss': round(vm["total"]/(1024*1024*1024),2)
             }
             if config.mem_warning_threshold != 0:
                 limits['memory']['warn'] = (config.mem_limit - rss) < (config.mem_limit * config.mem_warning_threshold)

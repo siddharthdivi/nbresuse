@@ -5,7 +5,7 @@ define(['jquery', 'base/js/utils'], function ($, utils) {
                       .addClass('btn-group')
                       .addClass('pull-right')
             .append(
-                $('<strong>').text('Memory: ')
+                $('<strong>').text('MEMORY: ')
             ).append(
                 $('<span>').attr('id', 'nbresuse-mem')
                            .attr('title', 'Actively used Memory (updates every 10ms)')
@@ -39,7 +39,7 @@ define(['jquery', 'base/js/utils'], function ($, utils) {
             }
             if (data['limits']['memory'] !== null) {
             }
-            $('#nbresuse-mem').text(display + ' GB ||  Swap : ' + data['swap']);
+            $('#nbresuse-mem').text(display + ' GB ; SWAP : ' + data['swap']);
         });
     }
 

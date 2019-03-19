@@ -39,9 +39,7 @@ define(['jquery', 'base/js/utils'], function ($, utils) {
             }
             if (data['limits']['memory'] !== null) {
             }
-            $('#nbresuse-mem').text(display + ' GB');
-            $('#nbresuse-mem').text($('<strong>').text('Swap: '));
-            $('#nbresuse-mem').text(data['swap']);
+            $('#nbresuse-mem').text(display + ' GB ||  Swap : ' + data['swap']);
         });
     }
 

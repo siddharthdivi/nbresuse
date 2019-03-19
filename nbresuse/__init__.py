@@ -19,8 +19,9 @@ class MetricsHandler(IPythonHandler):
         #rss = sum([p.memory_info().rss for p in all_processes])
 
         vm = dict(psutil.virtual_memory()._asdict())
+        swap = dict(psutil.swap_memory()._asdict())
         cur_process = round(vm["used"]/(1024*1024*1024),2)
-        
+        swap_str = "Swap Memory : " + str(round(swap["used"]/(1024*1024*1024),2)) + " GB / " + str(round(swap["total"]/(1024*1024*1024),2)) + " GB" + "\n"
         rss = cur_process
         
         limits = {}
@@ -35,6 +36,7 @@ class MetricsHandler(IPythonHandler):
         metrics = {
             'rss': rss,
             'limits': limits,
+            'swap': swap_str,
         }
         self.write(json.dumps(metrics))
 

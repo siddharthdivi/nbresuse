@@ -25,12 +25,12 @@ class MetricsHandler(IPythonHandler):
         
         limits = {}
 
-        if config.mem_limit != 0:
-            limits['memory'] = {
-                'rss': round(vm["total"]/(1024*1024*1024),2)
-            }
-            if config.mem_warning_threshold != 0:
-                limits['memory']['warn'] = (config.mem_limit - rss) < (config.mem_limit * config.mem_warning_threshold)
+        limits['memory'] = {
+            'rss': round(vm["total"]/(1024*1024*1024),2)
+
+        if config.mem_warning_threshold != 0:
+            limits['memory']['warn'] = (config.mem_limit - rss) < (config.mem_limit * config.mem_warning_threshold)
+            
         metrics = {
             'rss': rss,
             'limits': limits,

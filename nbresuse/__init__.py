@@ -20,7 +20,7 @@ class MetricsHandler(IPythonHandler):
         vm = dict(psutil.virtual_memory()._asdict())
         swap = dict(psutil.swap_memory()._asdict())
         cur_process = round(vm["used"]/(1024*1024*1024),2)
-        swap_str = str(round(swap["used"]/(1024*1024*1024),2)) + " GB / " + str(round(swap["total"]/(1024*1024*1024),2)) + " GB" + "\n"
+        swap_str = str(round(swap["used"]/(1024*1024*1024),2)) + " / " + str(round(swap["total"]/(1024*1024*1024),2)) + " GB" + "\n"
         rss = cur_process
         
         limits = {}

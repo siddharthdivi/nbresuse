@@ -8,7 +8,7 @@ define(['jquery', 'base/js/utils'], function ($, utils) {
                 $('<strong>').text('Memory: ')
             ).append(
                 $('<span>').attr('id', 'nbresuse-mem')
-                           .attr('title', 'Actively used Memory (updates every 5s)')
+                           .attr('title', 'Actively used Memory (updates every 10ms)')
             )
         );
         // FIXME: Do something cleaner to get styles in here?
@@ -39,7 +39,9 @@ define(['jquery', 'base/js/utils'], function ($, utils) {
             }
             if (data['limits']['memory'] !== null) {
             }
-            $('#nbresuse-mem').text(display + ' GB \n ' + data['swap']);
+            $('#nbresuse-mem').text(display + ' GB');
+            $('#nbresuse-mem').text($('<strong>').text('Memory: '));
+            $('#nbresuse-mem').text(data['swap']);
         });
     }
 

@@ -13,10 +13,16 @@ class MetricsHandler(IPythonHandler):
         Calculate and return current resource usage metrics
         """
         config = self.settings['nbresuse_display_config']
-        cur_process = psutil.Process()
-        all_processes = [cur_process] + cur_process.children(recursive=True)
-        rss = sum([p.memory_info().rss for p in all_processes])
+        
+        #cur_process = psutil.Process()
+        #all_processes = [cur_process] + cur_process.children(recursive=True)
+        #rss = sum([p.memory_info().rss for p in all_processes])
 
+        vm = dict(psutil.virtual_memory()._asdict())
+        cur_process = str(round(vm["used"]/(1024*1024*1024),2)) + " GB / " + str(round(vm["total"]/(1024*1024*1024),2)) + " GB" + "\n"
+        
+        rss = cur_process
+        
         limits = {}
 
         if config.mem_limit != 0:

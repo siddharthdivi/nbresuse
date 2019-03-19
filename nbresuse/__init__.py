@@ -6,6 +6,17 @@ from traitlets.config import Configurable
 from notebook.utils import url_path_join
 from notebook.base.handlers import IPythonHandler
 
+class color:
+           PURPLE = '\033[95m'
+           CYAN = '\033[96m'
+           DARKCYAN = '\033[36m'
+           BLUE = '\033[94m'
+           GREEN = '\033[92m'
+           YELLOW = '\033[93m'
+           RED = '\033[91m'
+           BOLD = '\033[1m'
+           UNDERLINE = '\033[4m'
+           END = '\033[0m'
 
 class MetricsHandler(IPythonHandler):
     def get(self):
@@ -21,7 +32,7 @@ class MetricsHandler(IPythonHandler):
         vm = dict(psutil.virtual_memory()._asdict())
         swap = dict(psutil.swap_memory()._asdict())
         cur_process = round(vm["used"]/(1024*1024*1024),2)
-        swap_str = "Swap Memory : " + str(round(swap["used"]/(1024*1024*1024),2)) + " GB / " + str(round(swap["total"]/(1024*1024*1024),2)) + " GB" + "\n"
+        swap_str = color.BOLD + "Swap Memory" + color.END + " : " + str(round(swap["used"]/(1024*1024*1024),2)) + " GB / " + str(round(swap["total"]/(1024*1024*1024),2)) + " GB" + "\n"
         rss = cur_process
         
         limits = {}

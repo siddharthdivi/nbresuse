@@ -3,9 +3,8 @@
 ![Screenshot with memory limit](screenshot.png)
 
 NB Resource Usage (nbresuse) is a small extension for Jupyter Notebooks that
-displays an indication of how much resources your current notebook server and
-its children (kernels, terminals, etc) are using. This is displayed in the
-main toolbar in the notebook itself, refreshing every 5s.
+displays an indication of how much system memory (RAM + Swap) is being used. 
+This is displayed in the main toolbar in the notebook itself, refreshing every 2s.
 
 ## Installation
 
@@ -49,5 +48,5 @@ can set the parameter `--ResourceUseDisplay.mem_warning_threshold=0.1`.
 
 ## Resources displayed
 
-Currently it only displays Memory usage (just RSS). Other metrics will be
+Currently it only displays System Wide Available Memory. Other metrics will be
 added in the future as needed.

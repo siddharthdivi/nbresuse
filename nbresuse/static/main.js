@@ -47,7 +47,7 @@ define(['jquery', 'base/js/utils'], function ($, utils) {
         setupDOM();
         displayMetrics();
         // Update every 10 milli seconds, eh?
-        setInterval(displayMetrics, 10);
+        setInterval(displayMetrics, 2000);
     };
 
     return {
